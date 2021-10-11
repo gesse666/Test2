@@ -1,0 +1,231 @@
+@import '_variables';
+
+* 
+{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    background-color: $background;
+    font-family: 'Montserrat', sans-serif;
+    color: $text;
+    background-image: url(/img/point.png);
+    @media (max-width:500px) {
+        background-image: none;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 37% 26% 37%;
+    grid-template-areas: 
+      "A C D"
+      "B C D";
+        @media (max-width:500px) {
+            grid-template-columns: 1fr;
+            grid-column-gap: 0;
+            grid-template-areas: 
+            "A"
+            "C"
+            "D"
+            "B";
+        }
+}
+
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding-top: 43px;
+    padding-left: 3.3%;
+    padding-right: 6.3%;
+        @media (max-width:500px) {
+            padding-top: 13px;
+            overflow: hidden;
+        }
+}
+
+.descr {
+    grid-area: A;
+    @media (max-width:500px) {
+        padding-left: 5px;
+    }
+    &__title {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 56px;
+        line-height: 68px;
+        margin-bottom: 58px;
+        margin-top: 21px;
+        @media (max-width:500px) {
+            font-size: 34px;
+            line-height: 110%;
+            margin-top: 5px;
+            margin-bottom: 32px;
+        }
+        &:last-child  {
+            // @media (max-width:500px) {
+                margin-bottom: 0;
+            // }
+        }
+    }
+    &__text {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 22px;
+        line-height: 170%;
+        margin-bottom: 18px;
+        padding-right: 50px;
+        @media (max-width:500px) {
+            font-size: 16px;
+            line-height: 170%;
+            max-width: 289px;
+            padding-right: 0;
+            &:last-child  {
+                    margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.tagline {
+    grid-area: B;
+    &__middle {
+        font-style: normal;
+        font-weight: 900;
+        font-size: 44.7911px;
+        line-height: 90%;
+        margin-top: 25px;
+        @media (max-width:500px) {
+            font-size: 38.6546px;
+        }
+        &--light {
+            font-weight: normal;
+        }
+    }
+    &__big {
+        font-weight: 900;
+        font-size: 61.4163px;
+        line-height: 90%;
+        margin-top: 28px;
+        margin-left: 58px;
+        margin-bottom: 90px;
+        @media (max-width:500px) {
+            margin-left: 0;
+            font-size: 49.8561px;
+            margin-top: 15px;
+            line-height: 60px;
+            &--biggest {
+                font-size: 61.4163px;
+            }
+        }
+        &--light {
+            font-weight: normal;
+        }
+    }
+}
+
+.levitation {
+    overflow: hidden;
+    position: relative;
+    grid-area: C;
+    height: 805px;
+    @media (max-width:500px) {
+        height: 786px;
+    }
+    &__girl {
+        width: 100%;
+        visibility: hidden;
+        position: absolute;
+        animation: 4s linear 2s flight forwards, 3s linear 6s infinite levitate alternate;
+        @media (max-width:500px) {
+            width: auto;
+        }
+    }
+    &__hole {
+        position: absolute;
+        bottom: 0;
+        left:50%;
+        transform:translate(-52%);
+        z-index: -1;
+        // width: 130px;
+        animation: 6s linear 0s holeScale;
+        animation-fill-mode: forwards;
+        @media (max-width:500px) {
+            left: 50%;
+            animation: 6s linear 0s holeScaleMob;
+        }
+    }
+}
+
+.phone {
+    grid-area: D;
+    width: 100%;
+    position: relative;
+    @media (max-width:500px) {
+        height: 445px;
+    }
+    &__img {
+        position: absolute;
+        left: -51px;
+        top: -23px;
+        max-width: 844px;
+        @media (max-width:500px) {
+            left: -18px;
+            top: 7px;
+        }
+    }
+
+}
+
+@keyframes levitate {
+    from {
+        top: 0;
+    }
+    
+    to {
+        top: 10px;
+    }
+}
+  
+@keyframes flight {
+from {
+    visibility: visible;
+    top: 350px;
+}
+
+to {
+    visibility: visible;
+    top: 0px;
+}
+}
+
+@keyframes holeScale {
+    0% {
+        width: 0;
+    }
+    
+    36% {
+        width: 90%;
+    }
+
+    100% {
+        width: 66%;
+    }
+
+    }
+
+@keyframes holeScaleMob {
+    0% {
+        width: 0;
+    }
+    
+    36% {
+        width: 95%;
+    }
+
+    100% {
+        width: 76%;
+    }
+
+    }
